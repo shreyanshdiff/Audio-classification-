@@ -51,7 +51,7 @@ pipeline {
                 - Label Encoder: ${BUILD_URL}artifact/label_encoder.pkl
                 - Confusion Matrix: ${BUILD_URL}artifact/confusion_matrix.png
                 - Training History: ${BUILD_URL}artifact/training_history.png''',
-                to: 'shreyansh1702@gmal.com',
+                to: 'shreyansh1702@gmail.com',
                 attachLog: true
             )
             cleanWs()
