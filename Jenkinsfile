@@ -1,7 +1,7 @@
 pipeline {
     agent any 
     environment {
-        PYTHON = 'python'
+        PYTHON = 'python3'
     }
     triggers {
         cron('H 21 * * 4') 
@@ -15,15 +15,15 @@ pipeline {
         stage('Setup') {
             steps {
                 script {
-                    bat "${PYTHON} -m pip install --upgrade pip"
-                    bat "${PYTHON} -m pip install -r requirements.txt"
+                    sh "${PYTHON} -m pip install --upgrade pip"
+                    sh "${PYTHON} -m pip install -r requirements.txt"
                 }
             }
         }
         stage('Train Model') {
             steps {
                 script {
-                    bat "${PYTHON} model.py > training_logs.txt"
+                    sh "${PYTHON} model.py > training_logs.txt"
                 }
             }
         }
@@ -51,7 +51,7 @@ pipeline {
                 - Label Encoder: ${BUILD_URL}artifact/label_encoder.pkl
                 - Confusion Matrix: ${BUILD_URL}artifact/confusion_matrix.png
                 - Training History: ${BUILD_URL}artifact/training_history.png''',
-                to: 'shreyansh1702@gmail.com', // Replace with your email
+                to: 'shreyansh1702@gmal.com',
                 attachLog: true
             )
             cleanWs()
